@@ -1,31 +1,39 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import ColumnList, { ColumnProps } from './components/ColumnList/index.vue'
+
+const list: ColumnProps[] = [
+  {
+    id: 1,
+    title: 'TypeScript',
+    avatar: '',
+    description: 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.'
+  },
+  {
+    id: 2,
+    title: 'Vue 3',
+    avatar: 'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5f3e41a8b7d9c60b68cdd1ec.jpg',
+    description: 'Vue 3 is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
+  },
+  {
+    id: 3,
+    title: 'Vue 2',
+    avatar: 'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5f3e41a8b7d9c60b68cdd1ec.jpg',
+    description: 'Vue 3 is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
+  },
+  {
+    id: 4,
+    title: 'react',
+    avatar: 'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5f3e41a8b7d9c60b68cdd1ec.jpg',
+    description: 'Vue 3 is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
+  }
+
+]
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="container">
+    <column-list :list="list"></column-list>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

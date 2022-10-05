@@ -15,7 +15,7 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.json'],
     parser: '@typescript-eslint/parser',
-    extraFileExtensions: ['.vue'],
+    extraFileExtensions: ['.vue', '.html', '.cjs'],
     ecmaFeatures: {
       jsx: true
     }
@@ -24,5 +24,10 @@ module.exports = {
     'vue'
   ],
   rules: {
+    'no-unused-vars': 1,
+    'func-call-spacing': 0,
+    'vue/multi-word-component-names': 0,
+    'no-debugger': process.env.NODE_ENV === 'production' ? 1 : 0,
+    'no-console': process.env.NODE_ENV === 'production' ? 1 : 0
   }
 }
