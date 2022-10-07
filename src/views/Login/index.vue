@@ -44,6 +44,9 @@ import FormItem from '@/components/FormItem/index.vue'
 import InvalidInput from '@/components/FormItem/InvalidInput.vue'
 import { reactive } from 'vue'
 import { useRouter } from 'vue-router'
+import { useUserStore } from '@/store/userStore'
+
+const store = useUserStore()
 
 const router = useRouter()
 
@@ -55,6 +58,7 @@ const form = reactive({
 
 const submitForm = (validate: boolean) => {
   if (validate) {
+    store.login()
     router.push('/')
   }
 }
