@@ -46,7 +46,7 @@ export default defineComponent({
       }))
     })
     const goDetail = (id: number) => {
-      router.push(`/detail/${id}`)
+      router.push(`/column/${id}`)
     }
     return {
       columnList,

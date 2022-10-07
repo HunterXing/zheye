@@ -1,15 +1,13 @@
 <template>
     <div class="Column-wrap">
-        {{ id }}
+        <post-list :list="testPosts"></post-list>
     </div>
 </template>
 
 <script setup lang="ts">
-import { useRoute, useRouter } from 'vue-router'
+import PostList from '@/components/PostList/index.vue'
+import { testPosts } from '@/mock/testData'
 
-const route = useRoute()
-
-const id = route.params.id
 </script>
 
 <style lang="scss" scoped>
