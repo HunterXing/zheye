@@ -13,8 +13,8 @@ const routes = [
   },
   {
     path: '/column/:id',
-    name: 'ColumnDetail',
-    component: async () => await import('@/views/ColumnDetail/index.vue')
+    name: 'Post',
+    component: async () => await import('@/views/Post/index.vue')
   }
 ]
 

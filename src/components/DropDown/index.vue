@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { useOutsideClick } from '@/hooks/useOutsideClick'
-import { defineComponent, onMounted, onUnmounted, ref } from 'vue'
+import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'DropDown',
   props: {
@@ -32,7 +32,7 @@ export default defineComponent({
       default: '下拉菜单'
     }
   },
-  setup (props, ctx) {
+  setup () {
     const isOpen = ref(false)
     const dropdownRef = ref<null | HTMLElement>(null)
     const isClickOutside = useOutsideClick(dropdownRef)
@@ -45,23 +45,6 @@ export default defineComponent({
     const handleOpen = () => {
       isOpen.value = !isOpen.value
     }
-
-    // const hander = (e: MouseEvent) => {
-    //   if (dropdownRef.value) {
-    //     if (!dropdownRef.value.contains(e.target as HTMLElement) && isOpen.value) {
-    //       isOpen.value = false
-    //     }
-    //   }
-    // }
-
-    // // lifecircle
-    // onMounted(() => {
-    //   document.addEventListener('click', hander)
-    // })
-
-    // onUnmounted(() => {
-    //   document.removeEventListener('click', hander)
-    // })
 
     return {
       handleOpen,

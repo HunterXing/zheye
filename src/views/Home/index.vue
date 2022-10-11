@@ -1,5 +1,5 @@
 <template>
-  <div class="Home-wrap">
+  <div class="home-wrap">
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
@@ -12,49 +12,18 @@
       </div>
     </section>
     <h4 class="font-weight-bold text-center">发现精彩</h4>
-    <column-list :list="list"></column-list>
+    <column-list :list="columns"></column-list>
   </div>
 </template>
 
 <script setup lang="ts">
-import ColumnList, { ColumnProps } from '@/components/ColumnList/index.vue'
+import ColumnList from '@/components/ColumnList/index.vue'
 import callout from '@/assets/images/callout.svg'
-const list: ColumnProps[] = [
-  {
-    id: 1,
-    title: 'TypeScript',
-    avatar: '',
-    description:
-      'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.'
-  },
-  {
-    id: 2,
-    title: 'Vue 3',
-    avatar:
-      'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5f3e41a8b7d9c60b68cdd1ec.jpg',
-    description:
-      'Vue 3 is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
-  },
-  {
-    id: 3,
-    title: 'Vue 2',
-    avatar:
-      'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5f3e41a8b7d9c60b68cdd1ec.jpg',
-    description:
-      'Vue 3 is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
-  },
-  {
-    id: 4,
-    title: 'react',
-    avatar:
-      'http://vue-maker.oss-cn-hangzhou.aliyuncs.com/vue-marker/5f3e41a8b7d9c60b68cdd1ec.jpg',
-    description:
-      'Vue 3 is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.'
-  }
-]
+import { useDataStore } from '@/store/dataStore'
+import { storeToRefs } from 'pinia'
+
+const dataStore = useDataStore()
+const { columns } = storeToRefs(dataStore)
 </script>
 
-<style lang="scss" scoped>
-.Home-wrap {
-}
-</style>
+<style lang="scss" scoped></style>
