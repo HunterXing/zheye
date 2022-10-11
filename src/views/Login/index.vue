@@ -3,25 +3,12 @@
     <validate-form @form-submit="submitForm">
       <form-item label="用户名">
         <invalid-input
-          v-model="form.username"
+          v-model="form.name"
           placeholder="请输入用户名"
           :rules="[
             {
               required: true,
               message: '用户名必填',
-            },
-          ]"
-        ></invalid-input>
-      </form-item>
-      <form-item label="邮箱">
-        <invalid-input
-          v-model="form.email"
-          placeholder="请输入邮箱"
-          autocomplete="off"
-          :rules="[
-            {
-              type: 'email',
-              message: '请输入正确的邮箱',
             },
           ]"
         ></invalid-input>
@@ -47,24 +34,24 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from '@/store/userStore'
 
 const store = useUserStore()
-
+const { login } = store
 const router = useRouter()
 
 const form = reactive({
-  username: '',
+  name: '',
   password: '',
-  email: ''
+  id: '',
+  isLogin: false
 })
 
 const submitForm = (validate: boolean) => {
   if (validate) {
-    store.login()
+    form.isLogin = true
+    login(form)
     router.push('/')
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.Login-wrap {
-}
 </style>

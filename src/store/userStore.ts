@@ -1,5 +1,6 @@
+import UserType from '@/types/UserType'
 import { defineStore } from 'pinia'
-
+import router from '@/router'
 // useStore 可以是 useUser、useCart 之类的任何东西
 // 第一个参数是应用程序中 store 的唯一 id
 export const useUserStore = defineStore('user', {
@@ -16,11 +17,9 @@ export const useUserStore = defineStore('user', {
     }
   },
   actions: {
-    login () {
+    login (form: UserType) {
       this.userInfo = {
-        id: '1',
-        name: 'admin',
-        isLogin: true
+        ...form
       }
     },
     logout () {
@@ -29,6 +28,7 @@ export const useUserStore = defineStore('user', {
         name: '',
         isLogin: false
       }
+      router.push('/login').catch(() => {})
     }
   }
 })

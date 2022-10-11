@@ -16,8 +16,8 @@
                 <drop-down-item>
                     <div>个人中心</div>
                 </drop-down-item>
-                <drop-down-item :disabled="true">
-                    <div>退出</div>
+                <drop-down-item>
+                    <div @click="logout">退出</div>
                 </drop-down-item>
             </drop-down>
         </div>
@@ -31,6 +31,7 @@ import { storeToRefs } from 'pinia'
 
 const userStore = useUserStore()
 const { userInfo } = storeToRefs(userStore)
+const { logout } = userStore
 </script>
 
 <style lang="scss" scoped>
