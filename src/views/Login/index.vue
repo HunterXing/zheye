@@ -41,7 +41,8 @@ const form = reactive({
   name: '',
   password: '',
   id: '',
-  isLogin: false
+  isLogin: false,
+  token: ''
 })
 
 const submitForm = (validate: boolean) => {
