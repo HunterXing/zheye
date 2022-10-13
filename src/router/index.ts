@@ -4,17 +4,29 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: async () => await import('@/views/Home/index.vue')
+    component: async () => await import('@/views/Home/index.vue'),
+    meta: {
+      requireAuth: false,
+      title: '首页'
+    }
   },
   {
     path: '/login',
     name: 'Login',
-    component: async () => await import('@/views/Login/index.vue')
+    component: async () => await import('@/views/Login/index.vue'),
+    meta: {
+      requireAuth: false,
+      title: '登录'
+    }
   },
   {
     path: '/column/:id',
-    name: 'Post',
-    component: async () => await import('@/views/Post/index.vue')
+    name: 'ColumnDetail',
+    component: async () => await import('@/views/ColumnDetail/index.vue'),
+    meta: {
+      requireAuth: true,
+      title: '专栏列表'
+    }
   }
 ]
 

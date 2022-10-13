@@ -21,9 +21,16 @@ import ColumnList from '@/components/ColumnList/index.vue'
 import callout from '@/assets/images/callout.svg'
 import { useDataStore } from '@/store/dataStore'
 import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
 
 const dataStore = useDataStore()
 const { columns } = storeToRefs(dataStore)
+
+onMounted(async () => {
+  // 调用pinia中的方法
+  dataStore.fetchColumns()
+})
+
 </script>
 
 <style lang="scss" scoped></style>

@@ -5,12 +5,12 @@
           <div class="card-body text-center">
             <img
               class="card-image-top round-circle border border-right w-25 my-3"
-              :src="column?.avatar"
+              :src="column?.avatar.url"
               :alt="column.title"
             />
             <h5 class="card-title">{{ column.title }}</h5>
             <p class="card-text text-left">{{ column.description }}</p>
-            <a type="button" class="btn btn-outline-primary" @click="goDetail(column.id)">进入专栏</a>
+            <a type="button" class="btn btn-outline-primary" @click="goDetail(column._id)">进入专栏</a>
           </div>
         </div>
       </div>
@@ -19,15 +19,9 @@
 
 <script lang="ts">
 import defaultColumnImg from '@/assets/images/column.jpg'
+import { ColumnProps } from '@/types/ColumnType'
 import { computed, defineComponent, PropType } from 'vue'
 import { useRouter } from 'vue-router'
-
-export interface ColumnProps {
-  id: number;
-  title: string;
-  avatar?: string;
-  description: string;
-}
 
 export default defineComponent({
   name: 'ColumnList',
@@ -37,15 +31,18 @@ export default defineComponent({
       required: true
     }
   },
-  setup (props, ctx) {
+  setup (props) {
     const router = useRouter()
     const columnList = computed(() => {
       return props.list?.map(column => ({
         ...column,
-        avatar: column.avatar || defaultColumnImg
+        avatar: {
+          ...column.avatar,
+          url: column.avatar?.url || defaultColumnImg
+        }
       }))
     })
-    const goDetail = (id: number) => {
+    const goDetail = (id: string) => {
       router.push(`/column/${id}`)
     }
     return {
