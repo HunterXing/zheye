@@ -2,7 +2,7 @@
     <nav class="navbar navbar-dark bg-primary justify-content-between mb-4 px-4">
     <!-- Navbar content -->
         <a href="#" class="navbar-brand">者也专栏</a>
-        <div v-if="!userInfo?.isLogin" class="list-inline mb-0">
+        <div v-if="!userInfo?._id" class="list-inline mb-0">
             <router-link to="/login">
                 <div class="list-inline-item btn btn-outline-light mx-10">登录</div>
             </router-link>
@@ -12,7 +12,7 @@
         </div>
 
         <div v-else>
-            <drop-down :title="'你好，' + userInfo?.name ">
+            <drop-down :title="'你好，' + userInfo?.nickName ">
                 <drop-down-item>
                     <div>个人中心</div>
                 </drop-down-item>

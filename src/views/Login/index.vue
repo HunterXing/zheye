@@ -3,12 +3,13 @@
     <validate-form @form-submit="submitForm">
       <form-item label="用户名">
         <invalid-input
-          v-model="form.name"
-          placeholder="请输入用户名"
+          v-model="form.email"
+          placeholder="请输入邮箱"
+          type = "email"
           :rules="[
             {
               required: true,
-              message: '用户名必填',
+              message: '邮箱必填',
             },
           ]"
         ></invalid-input>
@@ -38,16 +39,12 @@ const { login } = store
 const router = useRouter()
 
 const form = reactive({
-  name: '',
-  password: '',
-  id: '',
-  isLogin: false,
-  token: ''
+  email: '',
+  password: ''
 })
 
 const submitForm = (validate: boolean) => {
   if (validate) {
-    form.isLogin = true
     login(form)
     router.push('/')
   }

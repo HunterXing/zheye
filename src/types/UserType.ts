@@ -1,6 +1,15 @@
+interface avatarProps {
+  url: string
+  _id: string
+}
+
 export default interface UserType {
-  isLogin: boolean
-  name?: string
-  id?: string
-  token?: string
+  _id?: string
+  email: string
+  password?: string
+  nickName?: string
+  descript?: string
+  avatar?: avatarProps
+  column?: string
+  createdAt?: string
 }
