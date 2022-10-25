@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 import { useCookie } from '@/hooks/useCookie'
+import { createMessage } from '@/components/HDesign/HMessage/createMessage'
 const router = useRouter()
 // 封装axios
 const http = axios.create({
@@ -31,6 +32,7 @@ http.interceptors.request.use(
 // 响应拦截器
 http.interceptors.response.use(
   async response => {
+    debugger
     if (response.status === 200) {
       if (response.data?.code === 0) {
         return await Promise.resolve(response.data)
@@ -40,10 +42,32 @@ http.interceptors.response.use(
       }
     } else if (response.status === 401) {
       router.push('/login').catch(() => {})
+    } else if (response.status === 404) {
+      debugger
+      createMessage({
+        type: 'error',
+        message: response.data?.error
+      })
     } else {
       return await Promise.reject(response)
     }
   }, async e => {
+    switch (e.response.data.code) {
+      case '401':
+        createMessage({
+          type: 'error',
+          message: e.response.data.error
+        })
+        break
+      default:
+        createMessage({
+          type: 'error',
+          message: e.response.data.error,
+          timeout: 3000,
+          closeable: true
+        })
+    }
+
     return await Promise.reject(e)
   }
 )
